@@ -8,9 +8,9 @@ exports.getAllInventory = async (req, res, next) => {
     join Equipment E on Inventory.equipmentID = E.equipmentID\
     join Locations L on Inventory.locationID = L.locationID";
     sql.query(query, function(err, results){
-        if(err){
+        if(err || results.length == 0){
             console.log(err)
-            res.json({status : "No Inventory yet"})
+            res.json({status : "No Inventory"})
         }else{
             res.json(results)
         }
@@ -25,7 +25,7 @@ exports.getInventory = (req, res, next) => {
     WHERE L.locationID = ${req.params.id}`;
     console.log(query)
     sql.query(query, function(err, results){
-        if(err){
+        if(err || results.length == 0){
             res.json({status : "No Inventory found"})
         }else{
             res.json(results)
