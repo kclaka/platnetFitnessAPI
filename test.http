@@ -1,0 +1,32 @@
+GET http://127.0.0.1:3000/api/customers/
+###
+
+GET http://127.0.0.1:3000/api/transactions/1
+
+
+###
+GET http://127.0.0.1:3000/api/inventory/4
+
+###
+GET http://127.0.0.1:3000/api/transactions/4
+
+###
+
+GET http://127.0.0.1:3000/api/customers/1
+###
+
+POST http://127.0.0.1:5000/api/customers/
+
+
+###
+
+PUT http://127.0.0.1:3000/api/transactions/1
+
+###
+DELETE http://127.0.0.1:5000/api/customers/21
+
+###
+DELETE http://127.0.0.1:3000/api/transactions/1
+
+###
+GET  http://127.0.0.1:3000/api/schedules/1
