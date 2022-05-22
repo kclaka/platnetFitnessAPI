@@ -57,4 +57,4 @@
     - Get one Inventory by ID (GET)
          `https://planetfitapi.azurewebsites.net/api/inventory/:id`
     - Create Inventory  (POST)   
-        `https://planetfitapi.azurewebsites.net/api/trainers`
+        `https://planetfitapi.azurewebsites.net/api/inventory`
