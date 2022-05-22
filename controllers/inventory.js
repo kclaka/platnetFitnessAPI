@@ -3,7 +3,7 @@ const sql = require('../config/db')
 
 
 exports.getAllInventory = async (req, res, next) => {
-    const query =  "SELECT locationAddress, manager, equipmentName, equipmentType \
+    const query =  "SELECT locationAddress, manager, equipmentName, equipmentType, equipmentQuantity \
      from inventory\
     join Equipment E on Inventory.equipmentID = E.equipmentID\
     join Locations L on Inventory.locationID = L.locationID";
@@ -18,7 +18,7 @@ exports.getAllInventory = async (req, res, next) => {
 }
 
 exports.getInventory = (req, res, next) => {
-    const query =  `SELECT locationAddress, manager, equipmentName, equipmentType \
+    const query =  `SELECT locationAddress, manager, equipmentName, equipmentType, equipmentQuantity \
      from inventory\
     join Equipment E on Inventory.equipmentID = E.equipmentID\
     join Locations L on Inventory.locationID = L.locationID\
@@ -37,9 +37,10 @@ exports.createInventory = (req, res, next) => {
 
     const data = {
         equipmentID: req.body.equipmentID,
-        locationID : req.body.locationID
+        locationID : req.body.locationID,
+        equipmentQuantity : req.body.equipmentQuantity
     } 
-    const query = "INSERT INTO inventory (equipmentID, locationID) VALUES (?, ?)";
+    const query = "insert into Inventory (locationID, equipmentID, equipmentQuantity) VALUES (?, ?, ?)";
     
     
     sql.query(query, Object.values(data), function(err){
@@ -50,3 +51,14 @@ exports.createInventory = (req, res, next) => {
          }
      })
  }
+
+ exports.updateInventory = (req, res, next) => {
+    const query = `UPDATE Inventory SET ? WHERE equipmentID = ${req.params.id}`
+    sql.query(query, [req.body], function(err){
+        if(err){
+            res.json({status : err, reason: err.code});
+        }else{
+            res.json({status: "success", data: req.body})
+        }
+    })
+}

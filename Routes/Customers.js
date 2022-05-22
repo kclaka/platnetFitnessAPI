@@ -5,7 +5,7 @@ const {
     createCustomer,
     getCustomer,
     updateCustomer,
-    deleteCustomer,
+    deleteCustomer
 } = require('../controllers/customer')
 
 

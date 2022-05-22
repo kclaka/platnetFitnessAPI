@@ -51,6 +51,30 @@
     - Create Trainer  (POST)
         `https://planetfitapi.azurewebsites.net/api/trainers`
 
+- Locations
+   - Get all Locations  (GET)
+         `https://planetfitapi.azurewebsites.net/api/locations` 
+    - Get one Location by ID (GET)
+         `https://planetfitapi.azurewebsites.net/api/locations/:id`
+    - Update Location (PUT)
+         `https://planetfitapi.azurewebsites.net/api/locations/:id`
+    - Delete Locations (DELETE)  
+        `https://planetfitapi.azurewebsites.net/api/locations/:id`
+    - Create Locations  (POST)
+        `https://planetfitapi.azurewebsites.net/api/locations`
+
+- Equipment
+   - Get all Equipment  (GET)
+         `https://planetfitapi.azurewebsites.net/api/equipment` 
+    - Get one Equipment by ID (GET)
+         `https://planetfitapi.azurewebsites.net/api/equipment:id`
+    - Update Equipment (PUT)
+         `https://planetfitapi.azurewebsites.net/api/equipment/:id`
+    - Delete Equipment (DELETE)  
+        `https://planetfitapi.azurewebsites.net/api/equipment/:id`
+    - Create Equipment  (POST)
+        `https://planetfitapi.azurewebsites.net/api/equipment`
+
 - Inventory
    - Get all Inventories  (GET)
          `https://planetfitapi.azurewebsites.net/api/inventory` 
@@ -58,3 +82,5 @@
          `https://planetfitapi.azurewebsites.net/api/inventory/:id`
     - Create Inventory  (POST)   
         `https://planetfitapi.azurewebsites.net/api/inventory`
+    - Update Inventory **EquipmentQuantity** (PUT)
+         `https://planetfitapi.azurewebsites.net/api/equipment/:id`

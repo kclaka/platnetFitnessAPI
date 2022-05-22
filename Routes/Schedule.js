@@ -5,7 +5,7 @@ const {
     getSchedule,
     createSchedule,
     updateSchedule,
-    deleteSchedule,
+    deleteSchedule
 } = require('../controllers/schedules')
 
 

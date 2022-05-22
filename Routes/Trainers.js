@@ -5,7 +5,7 @@ const {
     getTrainer,
     createTrainer,
     updateTrainer,
-    deleteTrainer,
+    deleteTrainer
 } = require('../controllers/trainer')
 
 

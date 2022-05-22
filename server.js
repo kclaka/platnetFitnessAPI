@@ -8,6 +8,8 @@ const inventory = require("./Routes/Inventory")
 const transaction = require("./Routes/Transactions")
 const schedules = require("./Routes/Schedule")
 const trainers = require("./Routes/Trainers")
+const locations = require("./Routes/locations")
+const equipment = require("./Routes/Equipment")
 
 dotenv.config({path: './config/config.env'})
 
@@ -23,6 +25,8 @@ app.use('/api/inventory', inventory)
 app.use('/api/transactions', transaction)
 app.use('/api/schedules', schedules)
 app.use('/api/trainers', trainers)
+app.use('/api/locations', locations)
+app.use('/api/equipment', equipment)
 
 const PORT = process.env.PORT
 

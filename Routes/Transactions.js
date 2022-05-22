@@ -5,7 +5,7 @@ const {
     createTransaction,
     getTransaction,
     updateTransaction,
-    deleteTransaction,
+    deleteTransaction
 } = require('../controllers/transaction')
 
 

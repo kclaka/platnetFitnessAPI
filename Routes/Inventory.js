@@ -3,7 +3,8 @@ const router = express.Router();
 const { 
     getInventory,
     getAllInventory,
-    createInventory
+    createInventory,
+    updateInventory
 } = require('../controllers/inventory')
 
 
@@ -14,7 +15,7 @@ router.route('/')
 
 router.route('/:id')
 .get(getInventory)
-// .put(updateCustomer)
+.put(updateInventory)
 // .delete(deleteCustomer)
 
 module.exports = router;

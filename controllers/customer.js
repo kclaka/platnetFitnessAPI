@@ -5,7 +5,7 @@ const sql = require('../config/db')
 exports.getCustomers = async (req, res, next) => {
     const query =  "select * from customers";
     sql.query(query, function(err, results){
-        if(!results[0]){
+        if(err){
             res.json({status : "No Customers yet"})
         }else{
             res.json(results)
@@ -17,10 +17,10 @@ exports.getCustomer = (req, res, next) => {
     const query =  `select * from customers where customerID = ${req.params.id}`
     console.log(query)
     sql.query(query, function(err, results){
-        if(results === null){
+        if(err){
             res.json({status : "No Customer found"})
         }else{
-            res.json(results[0])
+            res.json(results)
         }
     })
 }
