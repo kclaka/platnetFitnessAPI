@@ -36,14 +36,14 @@ exports.getInventory = (req, res, next) => {
 exports.createInventory = (req, res, next) => {
 
     const data = {
-        locationID : parseInt(req.body.locationID),
-        equipmentID: parseInt(req.body.equipmentID),
-        equipmentQuantity : parseInt(req.body.equipmentQuantity)
+        locationID : req.body.locationID,
+        equipmentID: req.body.equipmentID,
+        equipmentQuantity : req.body.equipmentQuantity
     } 
     const query = "insert into Inventory (locationID, equipmentID, equipmentQuantity) VALUES (?, ?, ?)";
     
     
-    sql.query(query, Object.values(parseInt(data)), function(err){
+    sql.query(query, Object.values(data), function(err){
          if(err){
              res.json({status : err, reason: err.code});
          }else{
