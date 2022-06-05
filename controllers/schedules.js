@@ -1,7 +1,11 @@
 const sql = require('../config/db')
 
 exports.getSchedules = async (req, res, next) => {
-    const query =  "select * from schedules";
+    const query =  "SELECT distinct scheduleID, trainerName, activity, activityDays, startTime, duration, locationAddress\
+    from schedules\
+    join locations l on l.locationID = schedules.locationID\
+    join inventory i on l.locationID = i.locationID\
+    join trainers t on t.trainerID = schedules.trainerID";
     sql.query(query, function(err, results){
         if(err){
             res.json({status : "No Transactions yet"})
