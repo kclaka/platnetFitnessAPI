@@ -3,7 +3,7 @@ const sql = require('../config/db')
 
 
 exports.getAllInventory = async (req, res, next) => {
-    const query =  "SELECT locationAddress, manager, equipmentName, equipmentType, equipmentQuantity \
+    const query =  "SELECT L.locationID, E.equipmentID, locationAddress, manager, equipmentName, equipmentType, equipmentQuantity \
      from inventory\
     join Equipment E on Inventory.equipmentID = E.equipmentID\
     join Locations L on Inventory.locationID = L.locationID";
@@ -18,7 +18,7 @@ exports.getAllInventory = async (req, res, next) => {
 }
 
 exports.getInventory = (req, res, next) => {
-    const query =  `SELECT locationAddress, manager, equipmentName, equipmentType, equipmentQuantity \
+    const query =  `SELECT locationID, equipmentID  locationAddress, manager, equipmentName, equipmentType, equipmentQuantity \
      from inventory\
     join Equipment E on Inventory.equipmentID = E.equipmentID\
     join Locations L on Inventory.locationID = L.locationID\
@@ -53,12 +53,24 @@ exports.createInventory = (req, res, next) => {
  }
 
  exports.updateInventory = (req, res, next) => {
-    const query = `UPDATE Inventory SET ? WHERE equipmentID = ${req.params.id}`
+    const query = `UPDATE Inventory SET ? WHERE locationID = ${req.params.locationID} and  equipmentID = ${req.params.equipmentID}`
+    console.log([req.body])
     sql.query(query, [req.body], function(err){
         if(err){
             res.json({status : err, reason: err.code});
         }else{
             res.json({status: "success", data: req.body})
+        }
+    })
+}
+
+exports.deleteInventory = (req, res, next) => {
+    const query = `DELETE from Inventory WHERE locationID = ${req.params.locationID} and  equipmentID = ${req.params.equipmentID}`;
+    sql.query(query, function(err, result){
+        if(err){
+            res.json({status : err, reason: err.code});
+        }else{
+            res.json({status: "success", data: result})
         }
     })
 }

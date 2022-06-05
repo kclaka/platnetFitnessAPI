@@ -4,7 +4,8 @@ const {
     getInventory,
     getAllInventory,
     createInventory,
-    updateInventory
+    updateInventory,
+    deleteInventory
 } = require('../controllers/inventory')
 
 
@@ -15,7 +16,10 @@ router.route('/')
 
 router.route('/:id')
 .get(getInventory)
+
+
+router.route('/:locationID/:equipmentID')
 .put(updateInventory)
-// .delete(deleteCustomer)
+.delete(deleteInventory)
 
 module.exports = router;
