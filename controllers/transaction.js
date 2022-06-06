@@ -1,7 +1,9 @@
 const sql = require('../config/db')
 
 exports.getTransactions = async (req, res, next) => {
-    const query =  "select * from transactions";
+    const query =  "SELECT transactionID, CONCAT(c.fname, ' ' ,c.lname) AS CustomerName, amount, transactionDate\
+    from transactions\
+    join customers c on c.customerID = transactions.CustomerID";
     sql.query(query, function(err, results){
         if(err){
             res.json({status : "No Transactions yet"})
@@ -12,10 +14,13 @@ exports.getTransactions = async (req, res, next) => {
 }
 
 exports.getTransaction = (req, res, next) => {
-    const query =  `select * from transactions where transactionID = ${req.params.id}`
+    const query =  `SELECT transactionID, CONCAT(c.fname, ' ' ,c.lname) AS CustomerName, amount, transactionDate
+    from transactions
+    join customers c on c.customerID = transactions.CustomerID 
+    where transactionID = ${req.params.id}`
     sql.query(query, function(err, results){
         if(err){
-            res.json({status : "No Customer found"})
+            res.json({status : "No Transactions found"})
         }else{
             res.json(results)
         }
